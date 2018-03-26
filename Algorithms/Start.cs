@@ -39,7 +39,7 @@ namespace Algorithms
 					mindSweeper.Compute(matrix);
 					break;
 				case DIGITALNUMBERS:
-					DigitalNumbers dn = new DigitalNumbers();
+					DigitalNumbers2 dn = new DigitalNumbers2();
 					dn.Compute();
 					break;
 				default:
