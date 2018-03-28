@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DigitalNumbers2.cs" />
     <Compile Include="DigitalNumbers.cs" />
+    <Compile Include="JollyJumpers.cs" />
     <Compile Include="MindSweeper.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

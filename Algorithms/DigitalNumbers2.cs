@@ -105,9 +105,8 @@ namespace Algorithms
 				string value = string.Empty;
 				string requiredString = string.Empty;
 				bool copy = false;
-				//Console.WriteLine(one[i][0]+one[i][1]+one[i][2] +" "+ two[i][0]+two[i][1]+two[i][2]);
 				foreach (string s in num)
-					{
+				{
 					switch (s)
 					{
 						case "1":
@@ -117,8 +116,7 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 							
 							newOne.Add(requiredString);
-							one[i] = requiredString;
-								if (copy)
+							if (copy)
 									for (int j = 1; j < expander; j++)
 										newOne.Add(requiredString);
 							break;
@@ -129,7 +127,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newTwo.Add(requiredString);
-							two[i] = requiredString;
 							if (copy)
 								for(int j = 1; j < expander; j++)
 									newTwo.Add(requiredString);
@@ -150,7 +147,6 @@ namespace Algorithms
 							requiredString = string.Empty;
 							copy = false;
 							requiredString = Create(value, expander, ref copy);
-
 							newFour.Add(requiredString);
 							if(copy)
 								for (int j = 1; j < expander; j++)
@@ -161,9 +157,7 @@ namespace Algorithms
 							requiredString = string.Empty;
 							copy = false;
 							requiredString = Create(value, expander, ref copy);
-
 							newFive.Add(requiredString);
-							five[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newFive.Add(requiredString);
@@ -175,7 +169,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newSix.Add(requiredString);
-							six[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newSix.Add(requiredString);
@@ -187,7 +180,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newSeven.Add(requiredString);
-							seven[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newSeven.Add(requiredString);
@@ -199,7 +191,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newEight.Add(requiredString);
-							eight[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newEight.Add(requiredString);
@@ -211,7 +202,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newNine.Add(requiredString);
-							nine[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newNine.Add(requiredString);
@@ -223,7 +213,6 @@ namespace Algorithms
 							requiredString = Create(value, expander, ref copy);
 
 							newZero.Add(requiredString);
-							zero[i] = requiredString;
 							if (copy)
 								for (int j = 1; j < expander; j++)
 									newZero.Add(requiredString);
@@ -231,76 +220,172 @@ namespace Algorithms
 
 					}
 				}
-
 			}
-			Console.WriteLine("Line:");
 
-			foreach (var a in newOne)
-				Console.WriteLine(a);
-			foreach (var a in newTwo)
-				Console.WriteLine(a);
-			foreach(var a in newThree)
-				Console.WriteLine(a);
-			foreach(var a in newFour)
-				Console.WriteLine(a);
-			foreach (var a in newFive)
-				Console.WriteLine(a);
-			foreach (var a in newSix)
-				Console.WriteLine(a);
-			foreach (var a in newSeven)
-				Console.WriteLine(a);
-			foreach (var a in newEight)
-				Console.WriteLine(a);
-			foreach (var a in newNine)
-				Console.WriteLine(a);
-			foreach (var a in newZero)
-				Console.WriteLine(a);
+			int length = newOne.Count();
+			int width = newOne[0].Length - 1;
+			bool expand = false;
+			for (int i = 0; i < length; i++)
+			{
+				string line = string.Empty;
+				
+				foreach (string s in num)
+				{
+					switch (s)
+					{
+						case "1":
+							expand = false;
+							if (newOne[i].Length != one[0].Length + expander - 1)
+							{
+								expand = true;
+							}
+							line = line + BuildLine(newOne[i], expander, expand) + ' ';
+							break;
+						case "2":
+							expand = false;
+							if (newTwo[i].Length != two[0].Length + expander - 1)
+							{
+								expand = true;
+							}
+							line = line + BuildLine(newTwo[i],expander,expand) + ' ';
+							break;
+						case "3":
+							expand = false;
+							if (newThree[i].Length != three[0].Length + expander - 1)
+							{
+								expand = true;
+							}
+							line = line + BuildLine(newThree[i], expander, expand) + ' ';
+							break;
+						case "4":
+							expand = false;
+							if (newFour[i].Length != four[0].Length + expander - 1)
+							{
+								expand = true;
+							}
+							line = line + BuildLine(newFour[i], expander, expand) + ' ';
+							break;
+						case "5":
+							expand = false;
+							if (newFive[i].Length != five[0].Length + expander - 1)
+							{
+								expand = true;
+							}
+							line = line + BuildLine(newFive[i], expander, expand) + ' ';
+							break;
+					}
+				}
+				Console.WriteLine(line);
+			}
+			//Console.WriteLine("Line:");
+
+			//foreach (var a in newOne)
+			//	Console.WriteLine(a);
+			//foreach (var a in newTwo)
+			//	Console.WriteLine(a);
+			//foreach(var a in newThree)
+			//	Console.WriteLine(a);
+			//foreach(var a in newFour)
+			//	Console.WriteLine(a);
+			//foreach (var a in newFive)
+			//	Console.WriteLine(a);
+			//foreach (var a in newSix)
+			//	Console.WriteLine(a);
+			//foreach (var a in newSeven)
+			//	Console.WriteLine(a);
+			//foreach (var a in newEight)
+			//	Console.WriteLine(a);
+			//foreach (var a in newNine)
+			//	Console.WriteLine(a);
+			//foreach (var a in newZero)
+			//	Console.WriteLine(a);
 			return "";
+		}
+
+		private string BuildLine(string numberToProcess, int expander, bool expand)
+		{
+			int ctr = 0;
+			string line = string.Empty;
+			while (ctr < numberToProcess.Length)
+			{
+				line = line + numberToProcess[ctr];
+				ctr++;
+			}
+			if (expand)
+			{
+				ctr = 1;
+				while(ctr < expander)
+				{
+					line = line + ' ';
+					ctr++;
+				}
+			}
+			return line;
 		}
 
 		public string Create(string value, int expander, ref bool copy)
 		{
 			string requiredString = string.Empty;
 			int index = 0;
-			foreach (var a in value)
-			{
-				index++;
-				string requiredOne = string.Empty;
-				if (a == ' ')
-					requiredString = requiredString + a;
-				if (a == '-')
+			//if (value.Equals("   "))
+			//{
+			//	for (int j = 1; j <= expander; j++)
+			//	{
+			//		value = value + " ";
+			//	}
+			//	requiredString = requiredString + value;
+			//} else
+			//{
+				foreach (var a in value)
 				{
-					for (int j = 1; j <= expander; j++)
+					index++;
+					string requiredOne = string.Empty;
+					if (a == ' ')
 					{
-						if (j == expander)
-							requiredOne = requiredOne + a;
-						else
-							requiredOne = requiredOne + "-";
+						requiredString = requiredString + a;
+						//string spaceExpander = string.Empty;
+						//for (int j = 1; j <= expander; j++)
+						//{
+						//	spaceExpander = a + " ";
+						//}
+						//requiredString = requiredString + spaceExpander;
 					}
-					requiredString = requiredString + requiredOne;
-				}
-				if (a == '|')
-				{
-					if (value.StartsWith("|") && index == 1)
-					{
-						requiredOne = requiredOne + "|";
-						requiredString = requiredString + requiredOne;
-					}
-					else
+						
+					if (a == '-')
 					{
 						for (int j = 1; j <= expander; j++)
 						{
 							if (j == expander)
 								requiredOne = requiredOne + a;
 							else
-								requiredOne = requiredOne + " ";
+								requiredOne = requiredOne + "-";
 						}
 						requiredString = requiredString + requiredOne;
 					}
+					if (a == '|')
+					{
+						if (value.StartsWith("|") && index == 1)
+						{
+							requiredOne = requiredOne + "|";
+							requiredString = requiredString + requiredOne;
+						}
+						else
+						{
+							for (int j = 1; j <= expander; j++)
+							{
+								if (j == expander)
+									requiredOne = requiredOne + a;
+								else
+									requiredOne = requiredOne + " ";
+							}
+							requiredString = requiredString + requiredOne;
+						}
 
-					copy = true;
+						copy = true;
+					}
 				}
-			}
+			//}
+
 			return requiredString;
 
 		}
