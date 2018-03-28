@@ -38,9 +38,25 @@ namespace Algorithms
 		public string Compute()
 		{
 			string[] num = { "1", "2" };
+			int expander = 2;
+			Console.WriteLine(one[1].Count());
 			for (int i=0;i< 5; i++)
 			{
-				Console.WriteLine(one[i][0]+one[i][1]+one[i][2] +" "+ two[i][0]+two[i][1]+two[i][2]);
+				string line = string.Empty;
+				//Console.WriteLine(one[i][0]+one[i][1]+one[i][2] +" "+ two[i][0]+two[i][1]+two[i][2]);
+					foreach (string s in num)
+					{
+						switch (s)
+						{
+							case "1":
+								line = line + one[i][0] + one[i][1] + one[i][2];
+								break;
+							case "2":
+								line = line + two[i][0] + two[i][1] + two[i][2];
+								break;
+						}
+					}
+				Console.WriteLine(line);
 			}
 
 			return "";

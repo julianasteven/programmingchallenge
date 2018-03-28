@@ -13,6 +13,12 @@ namespace Algorithms
 		List<string> two = new List<string>();
 		List<String> three = new List<string>();
 		List<string> four = new List<string>();
+		List<string> five = new List<string>();
+		List<string> six = new List<string>();
+		List<string> seven = new List<string>();
+		List<string> eight = new List<string>();
+		List<string> nine = new List<string>();
+		List<string> zero = new List<string>();
 		
 		public DigitalNumbers2()
 		{
@@ -39,59 +45,77 @@ namespace Algorithms
 			four.Add(" - ");
 			four.Add("  |");
 			four.Add("   ");
+
+			five.Add(" - ");
+			five.Add("|  ");
+			five.Add(" - ");
+			five.Add("  |");
+			five.Add(" - ");
+
+			six.Add(" - ");
+			six.Add("|  ");
+			six.Add(" - ");
+			six.Add("| |");
+			six.Add(" - ");
+
+			seven.Add(" - ");
+			seven.Add("  |");
+			seven.Add("   ");
+			seven.Add("  |");
+			seven.Add("   ");
+
+			eight.Add(" - ");
+			eight.Add("| |");
+			eight.Add(" - ");
+			eight.Add("| |");
+			eight.Add(" - ");
+
+			nine.Add(" - ");
+			nine.Add("| |");
+			nine.Add(" - ");
+			nine.Add("  |");
+			nine.Add(" - ");
+
+			zero.Add(" - ");
+			zero.Add("| |");
+			zero.Add("   ");
+			zero.Add("| |");
+			zero.Add(" - ");
 		}
-		
-		
+
+
 		public string Compute()
 		{
-			string[] num = { "1", "2" , "3","4"};
+			string[] num = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 			int expander = 3;
 			List<string> newOne = new List<string>();
 			List<string> newTwo = new List<string>();
 			List<string> newThree = new List<string>();
 			List<string> newFour = new List<string>();
+			List<string> newFive = new List<string>();
+			List<string> newSix = new List<string>();
+			List<string> newSeven = new List<string>();
+			List<string> newEight = new List<string>();
+			List<string> newNine = new List<string>();
+			List<string> newZero = new List<string>();
+
+
 			for (int i=0;i< 5; i++)
 			{
-				string line = string.Empty;
+				string value = string.Empty;
+				string requiredString = string.Empty;
+				bool copy = false;
 				//Console.WriteLine(one[i][0]+one[i][1]+one[i][2] +" "+ two[i][0]+two[i][1]+two[i][2]);
-					foreach (string s in num)
+				foreach (string s in num)
 					{
 					switch (s)
 					{
 						case "1":
-							string value = one[i];
-							string requiredString = string.Empty;
-							bool copy = false;
-							foreach (var a in value)
-							{
-								string requiredOne = string.Empty;
-								if (a == ' ')
-									requiredString = requiredString + a;
-								if (a == '-')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + " ";
-									}
-									requiredString = requiredString + requiredString;
-								}
-								if (a == '|')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + " ";
-									}
-									requiredString = requiredString + requiredOne;
-									copy = true;
-								}
-							}
-
+							value = one[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+							
 							newOne.Add(requiredString);
 							one[i] = requiredString;
 								if (copy)
@@ -99,49 +123,11 @@ namespace Algorithms
 										newOne.Add(requiredString);
 							break;
 						case "2":
-							//line = line + two[i] + two[i] + two[i];
 							value = two[i];
 							requiredString = string.Empty;
 							copy = false;
-							foreach (var a in value)
-							{
-								string requiredOne = string.Empty;
-								if (a == ' ')
-									requiredString = requiredString + a;
-								if (a == '-')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + "-";
-									}
-									requiredString = requiredString + requiredOne;
-								}
-								if (a == '|')
-								{
-									if(value.StartsWith(" "))
-									{
-										for (int j = 1; j <= expander; j++)
-										{
-											if (j == expander)
-												requiredOne = requiredOne + a;
-											else
-												requiredOne = requiredOne + " ";
-										}
+							requiredString = Create(value, expander, ref copy);
 
-									} else
-									{
-										requiredOne = requiredOne + a;
-									}
-									
-									requiredString = requiredString + requiredOne;
-									copy = true;
-								}
-							}
-
-							//Console.WriteLine("a:" +a +":");
 							newTwo.Add(requiredString);
 							two[i] = requiredString;
 							if (copy)
@@ -152,37 +138,8 @@ namespace Algorithms
 							value = three[i];
 							requiredString = string.Empty;
 							copy = false;
-							foreach (var a in value)
-							{
-								string requiredOne = string.Empty;
-								if (a == ' ')
-									requiredString = requiredString + a;
-								if (a == '-')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + "-";
-									}
-									requiredString = requiredString + requiredOne;
-								}
-								if (a == '|')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + " ";
-									}
-									requiredString = requiredString + requiredOne;
-									copy = true;
-								}
-							}
-
-							//Console.WriteLine("a:" +a +":");
+							requiredString = Create(value, expander, ref copy);
+							
 							newThree.Add(requiredString);
 							if (copy)
 								for (int j = 1; j < expander; j++)
@@ -192,51 +149,86 @@ namespace Algorithms
 							value = four[i];
 							requiredString = string.Empty;
 							copy = false;
-							int index = 0;
-							foreach (var a in value)
-							{
-								index++;
-								string requiredOne = string.Empty;
-								if (a == ' ')
-									requiredString = requiredString + a;
-								if (a == '-')
-								{
-									for (int j = 1; j <= expander; j++)
-									{
-										if (j == expander)
-											requiredOne = requiredOne + a;
-										else
-											requiredOne = requiredOne + "-";
-									}
-									requiredString = requiredString + requiredOne;
-								}
-								if (a == '|')
-								{
-									if (value.StartsWith("|") && index == 1)
-									{
-										requiredOne = requiredOne + "|";
-										requiredString = requiredString + requiredOne;
-									} else
-									{
-										for (int j = 1; j <= expander; j++)
-										{
-											if (j == expander)
-												requiredOne = requiredOne + a;
-											else
-												requiredOne = requiredOne + " ";
-										}
-										requiredString = requiredString + requiredOne;
-									}
-									
-									copy = true;
-								}
-							}
+							requiredString = Create(value, expander, ref copy);
 
 							newFour.Add(requiredString);
-							if (copy)
+							if(copy)
 								for (int j = 1; j < expander; j++)
 									newFour.Add(requiredString);
 							break;
+						case "5":
+							value = five[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newFive.Add(requiredString);
+							five[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newFive.Add(requiredString);
+							break;
+						case "6":
+							value = six[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newSix.Add(requiredString);
+							six[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newSix.Add(requiredString);
+							break;
+						case "7":
+							value = seven[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newSeven.Add(requiredString);
+							seven[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newSeven.Add(requiredString);
+							break;
+						case "8":
+							value = eight[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newEight.Add(requiredString);
+							eight[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newEight.Add(requiredString);
+							break;
+						case "9":
+							value = nine[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newNine.Add(requiredString);
+							nine[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newNine.Add(requiredString);
+							break;
+						case "0":
+							value = zero[i];
+							requiredString = string.Empty;
+							copy = false;
+							requiredString = Create(value, expander, ref copy);
+
+							newZero.Add(requiredString);
+							zero[i] = requiredString;
+							if (copy)
+								for (int j = 1; j < expander; j++)
+									newZero.Add(requiredString);
+							break;
+
 					}
 				}
 
@@ -251,11 +243,66 @@ namespace Algorithms
 				Console.WriteLine(a);
 			foreach(var a in newFour)
 				Console.WriteLine(a);
+			foreach (var a in newFive)
+				Console.WriteLine(a);
+			foreach (var a in newSix)
+				Console.WriteLine(a);
+			foreach (var a in newSeven)
+				Console.WriteLine(a);
+			foreach (var a in newEight)
+				Console.WriteLine(a);
+			foreach (var a in newNine)
+				Console.WriteLine(a);
+			foreach (var a in newZero)
+				Console.WriteLine(a);
 			return "";
+		}
+
+		public string Create(string value, int expander, ref bool copy)
+		{
+			string requiredString = string.Empty;
+			int index = 0;
+			foreach (var a in value)
+			{
+				index++;
+				string requiredOne = string.Empty;
+				if (a == ' ')
+					requiredString = requiredString + a;
+				if (a == '-')
+				{
+					for (int j = 1; j <= expander; j++)
+					{
+						if (j == expander)
+							requiredOne = requiredOne + a;
+						else
+							requiredOne = requiredOne + "-";
+					}
+					requiredString = requiredString + requiredOne;
+				}
+				if (a == '|')
+				{
+					if (value.StartsWith("|") && index == 1)
+					{
+						requiredOne = requiredOne + "|";
+						requiredString = requiredString + requiredOne;
+					}
+					else
+					{
+						for (int j = 1; j <= expander; j++)
+						{
+							if (j == expander)
+								requiredOne = requiredOne + a;
+							else
+								requiredOne = requiredOne + " ";
+						}
+						requiredString = requiredString + requiredOne;
+					}
+
+					copy = true;
+				}
+			}
+			return requiredString;
+
 		}
 	}
 }
-
-
-
-//how do you make the pattern
